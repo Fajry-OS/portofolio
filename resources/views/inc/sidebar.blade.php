@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4"
     style="background-color: #134B70; background-image: linear-gradient(#03346E, #6EACDA); !important, ">
     <!-- Brand Logo -->
-    <a href="{{ asset('adm/index3.html') }}" class="brand-link">
+    <a href="{{ route('dashboard.index') }}" class="brand-link">
         <img src="{{ asset('adm/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">My Portofolio</span>
@@ -39,25 +39,25 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
-                        <p>UI Elements</p>
+                        <p>Educations</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
-                        <p>Forms</p>
+                        <p>Skills</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
-                        <p>Tables</p>
+                        <p>Projects</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Documentation</p>
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>Contacts</p>
                     </a>
                 </li>
             </ul>

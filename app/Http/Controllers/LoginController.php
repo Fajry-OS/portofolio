@@ -25,4 +25,10 @@ class LoginController extends Controller
         }
         return redirect()->back()->withErrors(['message' => 'Login Gagal. Mohon Periksa Kembali Email dan Password Anda!!']);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }
