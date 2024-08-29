@@ -21,7 +21,7 @@ class LoginController extends Controller
 
         $credential = $request->only(['email', 'password']);
         if (Auth::attempt($credential)) {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('profile');
         }
         return redirect()->back()->withErrors(['message' => 'Login Gagal. Mohon Periksa Kembali Email dan Password Anda!!']);
     }

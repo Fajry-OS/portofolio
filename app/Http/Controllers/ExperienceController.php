@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Experience;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class ExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.index');
+        $experiences = Experience::orderBy('id', 'desc')->get();
+        return view('experience.index', compact('experiences'));
     }
 
     /**
@@ -19,7 +21,8 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        $profile = Experience::all();
+        return view('experience.create', compact('profile'));
     }
 
     /**
@@ -27,7 +30,17 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'posisi' => 'required|string|max:55',
+            'perusahaan' => 'required|string|max:15',
+            'deskripsi' => 'nullable|string',
+            'tgl_mulai' => 'required|string|max:255',
+            'tgl_selesai' => 'nullable|string|max:255',
+            'tgl_skrg' => 'nullable|string|max:255',
+        ]);
+        Experience::create($request->all());
+
+        return redirect()->route('experience.index')->with('success', 'Data Berhasil Ditambah');
     }
 
     /**
