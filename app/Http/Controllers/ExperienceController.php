@@ -21,8 +21,7 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        $profile = Experience::all();
-        return view('experience.create', compact('profile'));
+        return view('experience.create');
     }
 
     /**
@@ -34,8 +33,8 @@ class ExperienceController extends Controller
             'posisi' => 'required|string|max:55',
             'perusahaan' => 'required|string|max:15',
             'deskripsi' => 'nullable|string',
-            'tgl_mulai' => 'required|string|max:255',
-            'tgl_selesai' => 'nullable|string|max:255',
+            'tgl_mulai' => 'required|date',
+            'tgl_selesai' => 'nullable|date',
             'tgl_skrg' => 'nullable|string|max:255',
         ]);
         Experience::create($request->all());
@@ -56,7 +55,8 @@ class ExperienceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $experience = Experience::findOrFail($id);
+        return view('experience.edit', compact('experience'));
     }
 
     /**
@@ -64,14 +64,45 @@ class ExperienceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'perusahaan' => 'required|string|max:255',
+            'posisi' => 'required|string|max:255',
+            'tgl_mulai' => 'required|date',
+            'tgl_selesai' => 'nullable|date|after_or_equal:tgl_mulai',
+            'tgl_skrg' => 'nullable|in:sekarang', // Checkbox nilai yang valid
+        ]);
+
+        // Temukan pengalaman kerja yang akan diperbarui
+        $experience = Experience::findOrFail($id);
+
+        // Ambil data dari permintaan
+        $data = $request->only(['perusahaan', 'posisi', 'tgl_mulai']);
+
+        // Cek apakah checkbox 'Sekarang' dicentang
+        if ($request->has('tgl_skrg')) {
+            // Jika 'Sekarang' dicentang, atur 'tgl_selesai' menjadi null
+            $data['tgl_selesai'] = null;
+            $data['tgl_skrg'] = 'sekarang';
+        } else {
+            // Jika tidak dicentang, pastikan 'tgl_selesai' terisi dan valid
+            $data['tgl_selesai'] = $request->input('tgl_selesai');
+            $data['tgl_skrg'] = null;
+        }
+
+        // Perbarui data pengalaman kerja
+        $experience->update($data);
+
+        // Redirect ke halaman daftar pengalaman dengan pesan sukses
+        return redirect()->route('experience.index')->with('success', 'Data berhasil di Update');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        Experience::where('id', $id)->delete();
+        return redirect()->to('experience')->with('message', 'Data berhasil di Delete');
     }
 }

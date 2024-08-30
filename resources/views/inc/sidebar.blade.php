@@ -37,27 +37,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('education.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>Educations</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('skill.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>Skills</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('project.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>Projects</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                    <a href="{{ route('certificate.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-address-book"></i>
-                        <p>Contacts</p>
+                        <p>Certifications</p>
                     </a>
                 </li>
             </ul>

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Add Experience')
 @section('content')
     <form action="{{ route('experience.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -34,7 +35,7 @@
                 <input type="date" id="tgl_selesai" class="form-control" name="tgl_selesai">
             </div>
             <div class="col-sm-2 ml-4 d-flex align-items-center">
-                <input type="checkbox" id="tgl_skrg" class="form-check-input" name="tgl_skrng" value="sekarang">
+                <input type="checkbox" id="tgl_skrg" class="form-check-input" name="tgl_skrg" value="sekarang">
                 <label for="tgl_skrg" class="form-check-label">Sekarang</label>
             </div>
         </div>
@@ -43,4 +44,25 @@
             <a href="{{ route('experience.index') }}" class="btn btn-secondary">Back</a>
         </div>
     </form>
+    <!-- JavaScript untuk Mengelola Status Tanggal Selesai -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('tgl_skrg');
+            const dateField = document.getElementById('tgl_selesai');
+
+            function toggleDateField() {
+                if (checkbox.checked) {
+                    dateField.disabled = true;
+                    dateField.value = ''; // Kosongkan nilai tanggal jika checkbox dicentang
+                } else {
+                    dateField.disabled = false;
+                }
+            }
+
+            checkbox.addEventListener('change', toggleDateField);
+
+            // Initial state
+            toggleDateField();
+        });
+    </script>
 @endsection

@@ -54,7 +54,7 @@
         </div>
         <div class="mb-3 row">
             <div class="col-sm-12 d-inline">
-                <a href="{{ route('profile.index') }}" class="btn btn-warning" type="submit">Kembali</a>
+                <a href="{{ route('profile.index') }}" class="btn btn-secondary" type="submit">Kembali</a>
                 <button class="btn btn-primary float-right" type="submit">Simpan</button>
             </div>
         </div>
