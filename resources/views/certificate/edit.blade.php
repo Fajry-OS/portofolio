@@ -7,15 +7,15 @@
         @method('PUT')
         <div class="mb-3">
             <label for="" class="form-label">Nama Sertifikat</label>
-            <input type="text" class="form-control" name="nama_sertifikat" placeholder="Nama Project">
+            <input type="text" class="form-control" name="nama_sertifikat" value="{{ $certificate->nama_sertifikat }}">
         </div>
         <div class="mb-3">
             <label for="deskripsi">Penyelenggara</label>
-            <input type="text" class="form-control" name="penyelenggara" placeholder="Penyelenggara">
+            <input type="text" class="form-control" name="penyelenggara" value="{{ $certificate->penyelenggara }}">
         </div>
         <div class="mb-3">
             <label for="deskripsi">Tanggal Sertifikat</label>
-            <input type="date" class="form-control" name="tgl_sertifikat">
+            <input type="date" class="form-control" name="tgl_sertifikat" value="{{ $certificate->tgl_sertifikat }}">
         </div>
         <div class="mb-3">
             <label for="picture">File Sertifikat</label>

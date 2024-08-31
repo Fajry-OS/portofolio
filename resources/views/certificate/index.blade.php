@@ -5,7 +5,7 @@
 @section('content')
     <div class="table-responsive">
         <div align="right" class="mb-3">
-            <a href="{{ route('project.create') }}" class="btn btn-primary">Tambah</a>
+            <a href="{{ route('certificate.create') }}" class="btn btn-primary">Tambah</a>
         </div>
         <table class="table table-bordered">
             <thead>

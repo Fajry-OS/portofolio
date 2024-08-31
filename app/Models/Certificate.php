@@ -12,7 +12,7 @@ class Certificate extends Model
     protected $fillable = [
         'nama_sertifikat',
         'penyelenggara',
-        'tgl_sertfikat',
+        'tgl_sertifikat',
         'gambar',
     ];
 }
