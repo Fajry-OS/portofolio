@@ -56,8 +56,14 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('certificate.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-address-book"></i>
+                        <i class="nav-icon bi bi-award"></i>
                         <p>Certifications</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('contact.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-envelope-fill"></i>
+                        <p>Message</p>
                     </a>
                 </li>
             </ul>

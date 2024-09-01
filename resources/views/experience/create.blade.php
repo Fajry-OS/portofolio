@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Add Experience')
 @section('content')
-    <form action="{{ route('experience.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('experience.store') }}" method="POST">
         @csrf
         <div class="mb-3 row">
             <div class="col-sm-2">
@@ -16,7 +16,15 @@
                 <label for="" class="form-label">Posisi</label>
             </div>
             <div class="col-sm-5">
-                <input type="text" class="form-control" name="posisi" placeholder="Nama Kategori">
+                <input type="text" class="form-control" name="posisi" placeholder="Posisi">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-sm-2">
+                <label for="" class="form-label">Deskripsi</label>
+            </div>
+            <div class="col-sm-5">
+                <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
             </div>
         </div>
         <div class="mb-3 row">
@@ -35,7 +43,7 @@
                 <input type="date" id="tgl_selesai" class="form-control" name="tgl_selesai">
             </div>
             <div class="col-sm-2 ml-4 d-flex align-items-center">
-                <input type="checkbox" id="tgl_skrg" class="form-check-input" name="tgl_skrg" value="sekarang">
+                <input type="checkbox" id="tgl_skrg" class="form-check-input" name="tgl_skrg" value="Sekarang">
                 <label for="tgl_skrg" class="form-check-label">Sekarang</label>
             </div>
         </div>

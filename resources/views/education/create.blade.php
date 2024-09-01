@@ -24,7 +24,7 @@
                 <label for="" class="form-label">GPA</label>
             </div>
             <div class="col-sm-5">
-                <input type="number" class="form-control" name="gpa" placeholder="GPA">
+                <input type="number" step="0.01" class="form-control" name="gpa" placeholder="GPA">
             </div>
         </div>
         <div class="mb-3 row">

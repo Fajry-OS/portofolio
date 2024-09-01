@@ -31,13 +31,15 @@ class CertificateController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_sertifikat' => 'required|string|max:55',
+            'nama_sertifikat' => 'required|string',
             'penyelenggara' => 'required|string',
             'tgl_sertifikat' => 'required|date',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
         ]);
 
-        //Menghandle file upload
+        $name = null;
+
+        //Menghandle file upload.
         if ($request->hasFile('gambar')) {
             $image = $request->file('gambar');
             $path = $image->store('public/image');
@@ -78,10 +80,10 @@ class CertificateController extends Controller
     {
         $certificate = Certificate::findOrFail($id);
         $request->validate([
-            'nama_sertifikat' => 'required|string|max:55',
+            'nama_sertifikat' => 'required|string',
             'penyelenggara' => 'required|string',
             'tgl_sertifikat' => 'required|date',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
         ]);
         if ($request->hasFile('gambar')) {
             //hapus gambar lama jika ada

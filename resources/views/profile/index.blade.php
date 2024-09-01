@@ -35,11 +35,12 @@
                     <a class="social-icon mr-2" href="{{ auth()->user()->instagram }}" target="_blank" title="Instagram">
                         <i class="fab fa-instagram fa-3x"></i>
                     </a>
-                    <a class="social-icon mr-2" href="{{ auth()->user()->facebook }}" target="_blank" title="Twitter">
+                    <a class="social-icon mr-2" href="{{ auth()->user()->facebook }}" target="_blank" title="Facebook">
                         <i class="fab fa-facebook fa-3x"></i>
                     </a>
-                    <a class="social-icon" href="https://wa.me/{{ auth()->user()->no_telp }}" target="_blank"
-                        title="Facebook">
+                    <a class="social-icon"
+                        href="https://wa.me/{{ strpos(auth()->user()->no_telp, '0') === 0 ? '62' . substr(auth()->user()->no_telp, 1) : auth()->user()->no_telp }}"
+                        target="_blank" title="Whatsapp">
                         <i class="fab fa-whatsapp fa-3x"></i>
                     </a>
                 </div>

@@ -25,6 +25,14 @@
         </div>
         <div class="mb-3 row">
             <div class="col-sm-2">
+                <label for="" class="form-label">Deskripsi</label>
+            </div>
+            <div class="col-sm-5">
+                <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control">{{ $experience->deskripsi }}</textarea>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-sm-2">
                 <label for="" class="form-label">Tanggal Mulai</label>
             </div>
             <div class="col-sm-5">

@@ -15,7 +15,7 @@ class ExperienceController extends Controller
         $experiences = Experience::orderBy('id', 'desc')->get();
         return view('experience.index', compact('experiences'));
     }
-
+    //
     /**
      * Show the form for creating a new resource.
      */
@@ -29,14 +29,17 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
+
         $request->validate([
-            'posisi' => 'required|string|max:55',
-            'perusahaan' => 'required|string|max:15',
+            'posisi' => 'required|string',
+            'perusahaan' => 'required|string',
             'deskripsi' => 'nullable|string',
             'tgl_mulai' => 'required|date',
             'tgl_selesai' => 'nullable|date',
             'tgl_skrg' => 'nullable|string|max:255',
         ]);
+
         Experience::create($request->all());
 
         return redirect()->route('experience.index')->with('success', 'Data Berhasil Ditambah');
@@ -67,6 +70,7 @@ class ExperienceController extends Controller
         $request->validate([
             'perusahaan' => 'required|string|max:255',
             'posisi' => 'required|string|max:255',
+            'deskripsi' => 'nullable|string',
             'tgl_mulai' => 'required|date',
             'tgl_selesai' => 'nullable|date|after_or_equal:tgl_mulai',
             'tgl_skrg' => 'nullable|in:sekarang', // Checkbox nilai yang valid
@@ -76,7 +80,7 @@ class ExperienceController extends Controller
         $experience = Experience::findOrFail($id);
 
         // Ambil data dari permintaan
-        $data = $request->only(['perusahaan', 'posisi', 'tgl_mulai']);
+        $data = $request->only(['perusahaan', 'posisi', 'deskripsi', 'tgl_mulai']);
 
         // Cek apakah checkbox 'Sekarang' dicentang
         if ($request->has('tgl_skrg')) {
