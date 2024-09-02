@@ -8,7 +8,7 @@
             <a href="{{ route('profile.index') }}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('portofolio.index') }}" class="nav-link">MyPortofolio</a>
+            <a href="{{ route('portofolio.about') }}" class="nav-link">MyPortofolio</a>
         </li>
     </ul>
 

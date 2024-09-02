@@ -30,13 +30,13 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'nama_sertifikat' => 'required|string',
             'penyelenggara' => 'required|string',
             'tgl_sertifikat' => 'required|date',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'gambar' => 'nullable|mimes:jpg,jpeg,png,pdf|max:10000'
         ]);
-
         $name = null;
 
         //Menghandle file upload.
@@ -83,7 +83,7 @@ class CertificateController extends Controller
             'nama_sertifikat' => 'required|string',
             'penyelenggara' => 'required|string',
             'tgl_sertifikat' => 'required|date',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+            'gambar' => 'nullable|mimes:jpg,jpeg,png,pdf|max:10000'
         ]);
         if ($request->hasFile('gambar')) {
             //hapus gambar lama jika ada

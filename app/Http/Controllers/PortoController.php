@@ -2,6 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Skill;
+use App\Models\Contact;
+use App\Models\Project;
+use App\Models\Education;
+use App\Models\Experience;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 
 class PortoController extends Controller
@@ -11,53 +19,57 @@ class PortoController extends Controller
      */
     public function index()
     {
-        return view('portofolio.index');
+        $data = User::first();
+
+        return view('portofolio.pages.about', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function resume()
     {
-        //
+        $educations = Education::all()->map(function ($education) {
+            // $education->tgl_mulai = Carbon::parse($education->tgl_mulai)->format('d M Y');
+            $education->tgl_mulai = Carbon::parse($education->tgl_mulai)->format('Y');
+            $education->tgl_selesai = Carbon::parse($education->tgl_selesai)->format('Y');
+            return $education;
+        });
+        $experiences = Experience::all()->map(function ($experience) {
+            // $education->tgl_mulai = Carbon::parse($education->tgl_mulai)->format('d M Y');
+            $experience->tgl_mulai = Carbon::parse($experience->tgl_mulai)->format('Y');
+            $experience->tgl_selesai = Carbon::parse($experience->tgl_selesai)->format('Y');
+            return $experience;
+        });
+        $certificates = Certificate::all()->map(function ($certificate) {
+            $certificate->tgl_sertifikat = Carbon::parse($certificate->tgl_sertifikat)->format('d M Y');
+            return $certificate;
+        });
+
+        return view('portofolio.pages.resume', compact('educations', 'experiences',  'certificates'));
     }
 
+    public function skill()
+    {
+        $datas = Skill::all();
+
+        return view('portofolio.pages.skill', compact('datas'));
+    }
+
+    public function project()
+    {
+        $datas = Project::all();
+
+        return view('portofolio.pages.project', compact('datas'));
+    }
+
+    public function contact()
+    {
+        $data = User::first();
+
+        return view('portofolio.pages.contact', compact('data'));
+    }
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function contactme(Request $request)
     {
         //
     }

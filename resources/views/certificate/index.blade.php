@@ -14,7 +14,6 @@
                     <th>Nama Sertifikat</th>
                     <th>Penyelenggara</th>
                     <th>Tanggal</th>
-                    <th>Gambar</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -25,7 +24,6 @@
                         <th>{{ $certificate->nama_sertifikat }}</th>
                         <th>{{ $certificate->penyelenggara }}</th>
                         <th>{{ $certificate->tgl_sertifikat }}</th>
-                        <td><img src="{{ asset('storage/image/' . $certificate->gambar) }}" width="100" alt="">
                         <th>
                             <a href="{{ route('certificate.edit', $certificate->id) }}"
                                 class="btn btn-success btn-xs">Edit</a>
