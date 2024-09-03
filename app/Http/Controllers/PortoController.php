@@ -71,6 +71,21 @@ class PortoController extends Controller
      */
     public function contactme(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string',
+            'email' => 'required|string|email',
+            'subject' => 'required|string',
+            'pesan' => 'required|string|regex:/^[\w\s\p{P}]+$/u',
+        ]);
+        Contact::create($request->all());
+
+        return redirect()->route('portofolio.contactme')->with('success', 'Data Berhasil Ditambah');
     }
+
+    // public function footer()
+    // {
+    //     $foot = User::first();
+
+    //     return view('portofolio.app', compact('foot'));
+    // }
 }

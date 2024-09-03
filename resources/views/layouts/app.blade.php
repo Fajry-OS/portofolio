@@ -18,6 +18,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    @include('sweetalert::alert')
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -103,6 +104,8 @@
     <script src="{{ asset('adm/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('adm/dist/js/demo.js') }}"></script>
+    {{-- Sweet Alert JS --}}
+    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
 </body>
 
 </html>

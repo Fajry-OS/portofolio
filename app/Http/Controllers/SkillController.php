@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SkillController extends Controller
 {
@@ -34,6 +35,7 @@ class SkillController extends Controller
         ]);
         Skill::create($request->all());
 
+        Alert::success('Success Title', 'Success Message');
         return redirect()->route('skill.index')->with('success', 'Data Berhasil Ditambah');
     }
 
@@ -76,6 +78,7 @@ class SkillController extends Controller
     public function destroy(string $id)
     {
         Skill::where('id', $id)->delete();
+        Alert::info('Info Title', 'Apa');
         return redirect()->to('skill')->with('message', 'Data berhasil di Delete');
     }
 }
