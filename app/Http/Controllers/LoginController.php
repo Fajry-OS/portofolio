@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -21,10 +22,13 @@ class LoginController extends Controller
 
         $credential = $request->only(['email', 'password']);
         if (Auth::attempt($credential)) {
+            Alert::success('Success', 'Selamat Anda Berhasil Login');
             return redirect()->intended('profile');
         }
-        return redirect()->back()->withErrors(['message' => 'Login Gagal. Mohon Periksa Kembali Email dan Password Anda!!']);
+        Alert::error('Error', 'Email atau Password salah');
+        return redirect()->back();
     }
+
 
     public function logout()
     {
